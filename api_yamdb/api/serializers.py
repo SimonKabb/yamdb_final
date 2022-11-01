@@ -137,8 +137,7 @@ class TokenSerializer(TokenObtainPairSerializer):
             raise serializers.ValidationError('Неверный код подтверждения')
         attrs.update({'password': f'{confirmation_code}'})
         del attrs['confirmation_code']
-        valid_result = super().validate(attrs)
-        return valid_result
+        return super().validate(attrs)
 
 
 class UserSerializer(serializers.ModelSerializer):
