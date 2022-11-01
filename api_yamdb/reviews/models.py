@@ -23,6 +23,7 @@ class User(AbstractUser):
     )
 
     def __str__(self):
+        """Return username."""
         return self.username
 
     class Meta:
