@@ -7,7 +7,13 @@ SECRET_KEY = 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['158.160.12.39', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['158.160.12.39',
+                 'yamdb',
+                 '0.0.0.0',
+                 'localhost',
+                 '127.0.0.1',
+                 '[::1]',
+                 'testserver', ]
 
 
 INSTALLED_APPS = [
