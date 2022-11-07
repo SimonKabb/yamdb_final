@@ -1,9 +1,8 @@
-from rest_framework.permissions import SAFE_METHODS, BasePermission
+from rest_framework.permissions import BasePermission, SAFE_METHODS
 
 
 class IsAuthorAdminModeratorOrReadOnly(BasePermission):
-    """Позволяет редактировать объекты.
-
+    """
     Позволяет редактировать и удалять
     объекты только их автору/администратору/модератору.
     """
@@ -27,8 +26,7 @@ class ReadOnly(BasePermission):
 
 
 class IsAdminOrReadOnly(BasePermission):
-    """Позволяет удалять и редактировать объекты администратору.
-
+    """
     Позволяет редактировать и удалять объекты только
     администратору.
     """
@@ -44,9 +42,8 @@ class IsAdminOrReadOnly(BasePermission):
 
 
 class IsAdmin(BasePermission):
-    """Позволяет работать с объектами только администратору.
-
-    Вот так
+    """
+    Позволяет работать с объектами только администратору.
     """
 
     def has_permission(self, request, view):

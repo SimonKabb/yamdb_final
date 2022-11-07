@@ -2,9 +2,11 @@ import datetime as dt
 
 from django.forms import ValidationError
 from django.shortcuts import get_object_or_404
+
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
 from reviews.models import Category, Comment, Genre, Review, Title, User
 
 
@@ -25,10 +27,10 @@ class ReviewSerializer(serializers.ModelSerializer):
     def validate(self, data):
         title_id = self.context['view'].kwargs['title_id']
         title = get_object_or_404(Title, id=title_id)
-        author = self.context["request"].user
+        author = self.context['request'].user
 
         if (
-            self.context["request"].method == 'POST'
+            self.context['request'].method == 'POST'
             and Review.objects.filter(author=author, title=title).exists()
         ):
             raise ValidationError(
@@ -66,7 +68,7 @@ class TitleSerializer(serializers.ModelSerializer):
     category = CategorySerializer(required=False)
     rating = serializers.IntegerField(
         read_only=True,
-        source="reviews__score__avg"
+        source='reviews__score__avg'
     )
 
     class Meta:
